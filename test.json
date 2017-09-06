@@ -1,0 +1,21 @@
+{
+        "driver": {
+            "typename": "bibliopixel.drivers.SimPixel.SimPixel",
+            "num": 8
+        },
+
+        "layout": {
+            "typename": "bibliopixel.layout.strip.Strip"
+        },
+
+        "animation": {
+            "typename": "animations.SunClock.SunClock"
+        },
+
+        "run": {
+		"fps": 10
+        },
+
+        "path": "./animations"
+}
+
