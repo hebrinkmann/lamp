@@ -14,6 +14,7 @@ itsdangerous==0.24
 Jinja2==2.9.6
 loady==1.6.6
 MarkupSafe==1.0
+pyephem==3.7.6.0
 python-dateutil==2.6.1
 requests==2.18.4
 six==1.10.0
