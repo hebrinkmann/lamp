@@ -1,9 +1,6 @@
 import bibliopixel.colors as colors
 from bibliopixel.animation import BaseStripAnim
 
-from bibliopixel import log
-log.setLogLevel(log.DEBUG)
-
 class StripTest(BaseStripAnim):
     def __init__(self, led, start=0, end=-1):
         #The base class MUST be initialized by calling super like this
