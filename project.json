@@ -1,0 +1,22 @@
+{
+        "driver": {
+            "typename": "bibliopixel.drivers.SPI.SPI",
+            "num": 8,
+	    "ledtype": "WS2801"
+        },
+
+        "layout": {
+            "typename": "bibliopixel.layout.strip.Strip"
+        },
+
+        "animation": {
+            "typename": "animations.StripTest.StripTest"
+        },
+
+        "run": {
+		"fps": 10
+        },
+
+        "path": "./animations"
+}
+
