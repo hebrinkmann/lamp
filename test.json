@@ -1,21 +1,39 @@
 {
-        "driver": {
-            "typename": "bibliopixel.drivers.SimPixel.SimPixel",
-            "num": 8
-        },
-
-        "layout": {
-            "typename": "bibliopixel.layout.strip.Strip"
-        },
-
+  "driver": {
+    "typename": "bibliopixel.drivers.SimPixel.SimPixel",
+    "num": 8
+  },
+  "layout": {
+    "typename": "bibliopixel.layout.strip.Strip"
+  },
+  "animation": {
+    "typename": "remote",
+    "external_access": true,
+    "port": 5000,
+    "title": "Test Remote",
+    "bgcolor": "linear-gradient(to bottom, #f36926, black)",
+    "default": null,
+    "animations": [
+      {
         "animation": {
-            "typename": "animations.SunClock.SunClock"
+          "typename": "animations.StripTest.StripTest",
+          "name": "StripTest"
         },
-
         "run": {
-		"fps": 10
+          "fps": 10
+        }
+      },
+      {
+        "animation": {
+          "typename": "animations.SunClock.SunClock",
+          "name": "SunClock"
         },
-
-        "path": "./animations"
+        "run": {
+          "fps": 10
+        }
+      }
+    ]
+  },
+  "path": "./animations"
 }
 
