@@ -3,3 +3,8 @@ include
 lib
 *.save
 pip-selfcheck.json
+*/__pychache__/*
+.idea
+.DS_Store
+*.iml
+.Python
