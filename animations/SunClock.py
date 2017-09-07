@@ -22,7 +22,8 @@ class SunClock(BaseStripAnim):
             self._led.set(i, color)
 
         indexNow = math.floor((now - startOfDay) * self._led.numLEDs / datetime.timedelta(days=1))
-        self._led.set(indexNow, colors.Red)
+        color = self._led.get(indexNow)
+        self._led.set(indexNow, colors.color_blend(colors.Red, colors.color_scale(color, 128)))
 
         return
 
