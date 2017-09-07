@@ -2,7 +2,8 @@
   "driver": {
     "typename": "bibliopixel.drivers.SPI.SPI",
     "num": 8,
-    "ledtype": "WS2801"
+    "ledtype": "WS2801",
+    "c_order": "RBG"
   },
   "layout": {
     "typename": "bibliopixel.layout.strip.Strip"
