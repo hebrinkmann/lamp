@@ -1,11 +1,11 @@
 import bibliopixel.colors as colors
-import ephem as ep
 import datetime
 import math
+import util
 
-from bibliopixel.animation import BaseStripAnim
+from bibliopixel.animation import BaseMatrixAnim
 
-class SunClock(BaseStripAnim):
+class SunClock(BaseMatrixAnim):
     def __init__(self, led, start=0, end=-1):
         #The base class MUST be initialized by calling super like this
         super(SunClock, self).__init__(led, start, end)
@@ -16,36 +16,13 @@ class SunClock(BaseStripAnim):
         now = datetime.datetime.now()
         startOfDay = datetime.datetime(now.year, now.month, now.day)
 
-        for i in range(0, self._led.numLEDs):
-            current = startOfDay + datetime.timedelta(days=1) * i / self._led.numLEDs
-            color = self.getColor(current)
-            self._led.set(i, color)
+        for i in range(0, self._led.height):
+            current = startOfDay + datetime.timedelta(days=1) * i / self._led.height
+            color = util.getSunColor(current)
+            self._led.set(0, i, color)
 
-        indexNow = math.floor((now - startOfDay) * self._led.numLEDs / datetime.timedelta(days=1))
-        color = self._led.get(indexNow)
-        self._led.set(indexNow, colors.color_blend(colors.Red, colors.color_scale(color, 128)))
+        indexNow = math.floor((now - startOfDay) * self._led.height / datetime.timedelta(days=1))
+        color = self._led.get(0, indexNow)
+        self._led.set(0, indexNow, colors.color_blend(colors.Red, colors.color_scale(color, 128)))
 
         return
-
-    def getColor(self, date):
-        current = ep.Date((date.year, date.month, date.day, date.hour, date.minute, date.second))
-        startOfDay = ep.Date((date.year, date.month, date.day))
-        endOfDay = startOfDay + 1
-
-        observer = ep.Observer()
-        observer.lat = '54.0'
-        observer.lon = '-10.0'
-        observer.date = startOfDay
-        sunrise = observer.next_rising(ep.Sun())
-        sunset = observer.next_setting(ep.Sun())
-
-        result = colors.Black
-
-        if (current >= startOfDay) & (current < endOfDay):
-            result = colors.Blue
-
-            if (current >= sunrise) & (current < sunset):
-                result = colors.Yellow
-
-        return result
-
