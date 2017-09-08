@@ -1,10 +1,12 @@
 {
   "driver": {
     "typename": "bibliopixel.drivers.SimPixel.SimPixel",
-    "num": 8
+    "num": 160
   },
   "layout": {
-    "typename": "bibliopixel.layout.strip.Strip"
+    "typename": "bibliopixel.layout.matrix.Matrix",
+    "width": 20,
+    "height": 8
   },
   "animation": {
     "typename": "remote",
@@ -27,6 +29,15 @@
         "animation": {
           "typename": "animations.SunClock.SunClock",
           "name": "SunClock"
+        },
+        "run": {
+          "fps": 10
+        }
+      },
+      {
+        "animation": {
+          "typename": "animations.Clock.Clock",
+          "name": "Clock"
         },
         "run": {
           "fps": 10
