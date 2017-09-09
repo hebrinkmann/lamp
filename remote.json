@@ -1,12 +1,14 @@
 {
   "driver": {
     "typename": "bibliopixel.drivers.SPI.SPI",
-    "num": 8,
+    "num": 64,
     "ledtype": "WS2801",
     "c_order": "RBG"
   },
   "layout": {
-    "typename": "bibliopixel.layout.strip.Strip"
+    "typename": "bibliopixel.layout.matrix.Matrix",
+    "width": 8,
+    "height": 8
   },
   "animation": {
     "typename": "remote",
@@ -29,6 +31,15 @@
         "animation": {
           "typename": "animations.SunClock.SunClock",
           "name": "SunClock"
+        },
+        "run": {
+          "fps": 10
+        }
+      },
+      {
+        "animation": {
+          "typename": "animations.Clock.Clock",
+          "name": "Clock"
         },
         "run": {
           "fps": 10
