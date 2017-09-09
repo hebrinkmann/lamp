@@ -1,11 +1,11 @@
 {
   "driver": {
     "typename": "bibliopixel.drivers.SimPixel.SimPixel",
-    "num": 160
+    "num": 64
   },
   "layout": {
     "typename": "bibliopixel.layout.matrix.Matrix",
-    "width": 20,
+    "width": 8,
     "height": 8
   },
   "animation": {
