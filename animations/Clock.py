@@ -11,7 +11,7 @@ class Clock(BaseMatrixAnim):
         super(Clock, self).__init__(led, start, end)
         self.minutex = 0
         self.secondx = 0
-        self.digitColor = colors.color_scale(colors.White, 64)
+        self.digitColor = colors.color_scale(colors.White, 16)
 
     def step(self, amt=1):
         led = self._led
