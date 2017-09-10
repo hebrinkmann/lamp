@@ -1,6 +1,5 @@
 import bibliopixel.colors as colors
 import datetime
-import math
 import util
 
 from bibliopixel.animation import BaseMatrixAnim
@@ -16,13 +15,17 @@ class SunClock(BaseMatrixAnim):
         now = datetime.datetime.now()
         startOfDay = datetime.datetime(now.year, now.month, now.day)
 
-        for i in range(0, self._led.height):
-            current = startOfDay + datetime.timedelta(days=1) * i / self._led.height
-            color = util.getSunColor(current)
-            self._led.set(0, i, color)
+        led = self._led
+        showMarker = True
+        for x in range(0, led.width):
+            for y in range(0, led.height):
+                current = startOfDay + datetime.timedelta(days=1) * (x * led.height + y) / led.numLEDs
+                color = util.getSunColor(current)
 
-        indexNow = math.floor((now - startOfDay) * self._led.height / datetime.timedelta(days=1))
-        color = self._led.get(0, indexNow)
-        self._led.set(0, indexNow, colors.color_blend(colors.Red, colors.color_scale(color, 128)))
+                if showMarker and current >= now:
+                    color = colors.color_blend(colors.Red, colors.color_scale(color, 128))
+                    showMarker = False
+
+                led.set(x, y, color)
 
         return
