@@ -12,8 +12,8 @@ class SunClock(BaseMatrixAnim):
         self._colors = [colors.Red, colors.Orange, colors.Yellow, colors.Green, colors.Blue, colors.Indigo]
 
     def step(self, amt = 1):
-        now = datetime.datetime.now()
-        startOfDay = datetime.datetime(now.year, now.month, now.day)
+        now = util.getNow()
+        startOfDay = util.getStartOfDay(now)
 
         led = self._led
         showMarker = True
