@@ -51,6 +51,15 @@
         "run": {
           "fps": 1
         }
+      },
+      {
+        "animation": {
+          "typename": "animations.StripeClock.StripeClock",
+          "name": "StripeClock"
+        },
+        "run": {
+          "fps": 1
+        }
       }
     ]
   },
