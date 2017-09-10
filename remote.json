@@ -11,7 +11,7 @@
     "height": 8
   },
   "animation": {
-    "typename": "remote",
+    "typename": "animations.Remote.Remote",
     "external_access": true,
     "port": 5000,
     "title": "Test Remote",
@@ -43,6 +43,15 @@
         },
         "run": {
           "fps": 10
+        }
+      },
+      {
+        "animation": {
+          "typename": "animations.Static.Static",
+          "name": "Static"
+        },
+        "run": {
+          "fps": 1
         }
       }
     ]
