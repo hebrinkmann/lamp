@@ -17,7 +17,7 @@ class Clock(BaseMatrixAnim):
         led = self._led
         led.all_off()
 
-        now = datetime.datetime.now()
+        now = util.getNow()
 
         led.fillScreen(util.getSunColor(now))
 
