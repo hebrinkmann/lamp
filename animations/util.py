@@ -1,5 +1,6 @@
 import ephem as ep
 import bibliopixel.colors as colors
+import config
 
 def getSunColor(date):
     current = ep.Date((date.year, date.month, date.day, date.hour, date.minute, date.second))
@@ -16,9 +17,9 @@ def getSunColor(date):
     result = colors.Black
 
     if (current >= startOfDay) & (current < endOfDay):
-        result = colors.hsv2rgb_spectrum((40, 128, 200))
+        result = config.nightcolor
 
         if (current >= sunrise) & (current < sunset):
-            result = colors.BlanchedAlmond
+            result = config.daycolor
 
     return result
