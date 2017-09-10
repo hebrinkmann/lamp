@@ -8,7 +8,8 @@
   "layout": {
     "typename": "bibliopixel.layout.matrix.Matrix",
     "width": 8,
-    "height": 8
+    "height": 8,
+    "rotation": 90
   },
   "animation": {
     "typename": "animations.Remote.Remote",
