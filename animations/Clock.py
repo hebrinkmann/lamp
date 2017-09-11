@@ -29,17 +29,23 @@ class Clock(BaseMatrixAnim):
         self.secondx = self.secondx * .25 + led.width * now.second / 60 * 0.75
 
         for x in range(0, led.width):
+            minuteLevel = 128 - (x - self.minutex) * (x - self.minutex) * 60
+            if minuteLevel < 0:
+                minuteLevel = 0
+
+            secondLevel = 128 - (x - self.secondx) * (x - self.secondx) * 60
+            if (secondLevel < 0):
+                secondLevel = 0
+
+            pointerColor = colors.color_blend(colors.color_scale(colors.DarkGreen, secondLevel),
+                                              colors.color_scale(colors.DarkRed, minuteLevel))
+            if minuteLevel > secondLevel:
+                pointerLevel = minuteLevel
+            else:
+                pointerLevel = secondLevel
+
             for y in range(0, led.height):
-                minuteLevel = 96 - (x - self.minutex) * (x - self.minutex) * 60
-                if minuteLevel < 0:
-                    minuteLevel = 0
-
-                secondLevel = 96 - (x - self.secondx) * (x - self.secondx) * 60
-                if (secondLevel < 0):
-                    secondLevel = 0
-
-                color = colors.color_blend(colors.color_scale(led.get(x, y), 256 - minuteLevel), colors.color_scale(colors.DarkRed, minuteLevel))
-                color = colors.color_blend(colors.color_scale(color, 256 - secondLevel), colors.color_scale(colors.DarkGreen, secondLevel))
+                color = colors.color_blend(colors.color_scale(led.get(x, y), 256 - pointerLevel), colors.color_scale(pointerColor, pointerLevel))
 
                 led.set(x, y, color)
 
