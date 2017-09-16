@@ -1,13 +1,11 @@
 {
   "driver": {
-    "typename": "bibliopixel.drivers.SPI.SPI",
-    "num": 64,
-    "ledtype": "WS2801",
-    "c_order": "RBG"
+    "typename": "bibliopixel.drivers.SimPixel.SimPixel",
+    "num": 128
   },
   "layout": {
     "typename": "bibliopixel.layout.matrix.Matrix",
-    "width": 8,
+    "width": 16,
     "height": 8,
     "rotation": 90
   },
